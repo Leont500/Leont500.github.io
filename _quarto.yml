@@ -1,27 +1,31 @@
 website:
-  title: "Leont500.github.io"
-  image: media/Headshot.jpeg
-  toc: false
+  title: "Leonardo Torres"
+  image: media/Headshot.jpg
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
       
-about:
+
+about: 
   template: solana
   image-shape: rectangle
   image-width: 15em
   links:
-  -text: LinkedIn
-    href: https://www.linkedin.com/in/leonardotorrespomona/
-    
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/leonardotorrespomona/
+
+        
+# page content excluded for brevity ~
+
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
+    page-layout: full
 
 editor: visual
 
