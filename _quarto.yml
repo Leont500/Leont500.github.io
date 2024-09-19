@@ -4,11 +4,15 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
-      - resources.qmd
-      - DataVisualization.qmd
-      
+        text: Me!
+      - href: about.qmd
+        text: About Info
+      - href: resources.qmd
+        text: Resources!
+      - text: "Data Viz"
+        menu:
+          - text: "Visualizations of Rolling Stone Albumes and UFO Sightings!"
+            href: DataVisualization.qmd
 
 format:
   html:

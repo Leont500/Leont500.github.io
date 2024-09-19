@@ -5,6 +5,9 @@ description: |
 author: Leonardo Torres
 date: September 18, 2024
 format: html
+execute:
+  warning: false
+  message: false
 ---
 
 ```{r}
@@ -39,8 +42,8 @@ day_parts_map <- readr::read_csv('https://raw.githubusercontent.com/rfordatascie
 ```{r}
 
 library(tidyverse)
-ggplot(data = ufo_sightings) +
-  geom_point(aes(x = state, y = reported_date_time, color = reported_date_time, alpha= .6))+
+ggplot(data = filter(ufo_sightings, state %in% c("CA", "FL", "MA", "NV", "NM", "NY", "OH", "TX", "WA", "WY"))) +
+  geom_point(aes(x = state, y = reported_date_time, color = reported_date_time, alpha= .5))+
   labs(
     x = "State",
     y = "Time"
