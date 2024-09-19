@@ -1,0 +1,48 @@
+---
+title: "Data Analysis"
+description: |
+  Analysis of Rolling Stones Albums & UFO Sightings from TidyTueday
+author: Leonardo Torres
+date: September 18, 2024
+format: html
+---
+
+```{r}
+
+# Option 2: Read directly from GitHub
+
+rolling_stone <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-07/rolling_stone.csv')
+
+
+
+```
+
+```{r}
+library(tidyverse)
+ggplot(data = rolling_stone) +
+  geom_point(aes(x = release_year, y = genre, color = release_year))+
+  labs(
+    x = "Release Years",
+    y = "Genres"
+  )
+```
+
+```{r}
+
+
+ufo_sightings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/ufo_sightings.csv')
+places <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/places.csv')
+day_parts_map <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/day_parts_map.csv')
+
+```
+
+```{r}
+
+library(tidyverse)
+ggplot(data = ufo_sightings) +
+  geom_point(aes(x = state, y = reported_date_time, color = reported_date_time, alpha= .6))+
+  labs(
+    x = "State",
+    y = "Time"
+  )
+```
