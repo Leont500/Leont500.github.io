@@ -8,18 +8,6 @@ website:
       - about.qmd
       
 
-about: 
-  template: solana
-  image-shape: rectangle
-  image-width: 15em
-  links:
-    - text: LinkedIn
-      href: https://www.linkedin.com/in/leonardotorrespomona/
-
-        
-# page content excluded for brevity ~
-
-
 format:
   html:
     theme: cosmo
