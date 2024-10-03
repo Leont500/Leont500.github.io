@@ -1,17 +1,17 @@
 [
   {
-    "objectID": "DataVisualization.html",
-    "href": "DataVisualization.html",
-    "title": "Data Analysis",
-    "section": "",
-    "text": "# Option 2: Read directly from GitHub\n\nrolling_stone &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-07/rolling_stone.csv')\n\n\nlibrary(tidyverse)\nggplot(data = rolling_stone) +\n  geom_point(aes(x = release_year, y = genre, color = release_year))+\n  labs(\n    x = \"Release Years\",\n    y = \"Genres\"\n  )\n\n\n\n\n\n\n\n\n\nufo_sightings &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/ufo_sightings.csv')\nplaces &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/places.csv')\nday_parts_map &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/day_parts_map.csv')\n\n\nlibrary(tidyverse)\nggplot(data = filter(ufo_sightings, state %in% c(\"CA\", \"FL\", \"MA\", \"NV\", \"NM\", \"NY\", \"OH\", \"TX\", \"WA\", \"WY\"))) +\n  geom_point(aes(x = state, y = reported_date_time, color = reported_date_time, alpha= .5))+\n  labs(\n    x = \"State\",\n    y = \"Time\"\n  )"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Leonardo Torres",
     "section": "",
     "text": "My name is Leonardo Torres, a junior at Pomona College majoring in Computer Science and Minoring in Math + Data Science. I am very involved at the Draper Center where I coordinator two programs, Pomona Partners and PAYS. I enjoy being involved with affinity groups on campus and love spending time engaging with the community. I am also an officer with the 5C Club LatinX in Tech (LIT)."
+  },
+  {
+    "objectID": "DataVisualization.html",
+    "href": "DataVisualization.html",
+    "title": "Data Analysis",
+    "section": "",
+    "text": "# Option 2: Read directly from GitHub\n\nrolling_stone &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-07/rolling_stone.csv')\n\n\nlibrary(tidyverse)\nggplot(data = rolling_stone) +\n  geom_point(aes(x = release_year, y = genre, color = release_year))+\n  labs(\n    x = \"Release Years\",\n    y = \"Genres\"\n  )\n\n\n\n\n\n\n\n\n\nufo_sightings &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/ufo_sightings.csv')\nplaces &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/places.csv')\nday_parts_map &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/day_parts_map.csv')\n\n\nlibrary(tidyverse)\nggplot(data = filter(ufo_sightings, state %in% c(\"CA\", \"FL\", \"MA\", \"NV\", \"NM\", \"NY\", \"OH\", \"TX\", \"WA\", \"WY\"))) +\n  geom_point(aes(x = state, y = reported_date_time, color = reported_date_time, alpha= .5))+\n  labs(\n    x = \"State\",\n    y = \"Time\"\n  )"
   },
   {
     "objectID": "projecttwo.html",
