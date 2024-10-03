@@ -9,10 +9,13 @@ website:
         text: About Info
       - href: resources.qmd
         text: Resources!
+      - href: projecttwo.qmd
+        text: Netflix Project 2
       - text: "Data Viz"
         menu:
           - text: "Visualizations of Rolling Stone Albumes and UFO Sightings!"
             href: DataVisualization.qmd
+
 
 format:
   html:
