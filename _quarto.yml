@@ -11,6 +11,8 @@ website:
         text: Resources!
       - href: projecttwo.qmd
         text: Netflix Project 2
+      - href: project3.qmd
+        text: Probability of High Start in BlackJack!
       - text: "Data Viz"
         menu:
           - text: "Visualizations of Rolling Stone Albumes and UFO Sightings!"
