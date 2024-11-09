@@ -76,7 +76,7 @@ draw_cards(2,10000)
 
 ### Visualizations
 
-Iterate it from drawing 2 to 10 cards and Visualization: This graph represents a line graph of probablities of a hand value being between 17-21 based on the amount of cards we draw. It has a downward trend which makes sense however we can see that at 2-3 cards we have a probability around 30% which is pretty high considering that we want to be in such a high range when playing this game. The cut off is around 6 cards where it is almost impossible to be at such a value.
+Iterate it from drawing 2 to 10 cards and Visualization: This graph represents a line graph of probabilities of a hand value being between 17-21 based on the amount of cards we draw. It has a downward trend which makes sense however we can see that at 2-3 cards we have a probability around 30% which is pretty high considering that we want to be in such a high range when playing this game. The cut off is around 6 cards where it is almost impossible to be at such a value.
 
 ```{r}
 set.seed(47)
