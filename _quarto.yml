@@ -13,6 +13,8 @@ website:
         text: Netflix Project 2
       - href: project3.qmd
         text: Probability of High Start in BlackJack!
+      - href: project4.qmd
+        text: WAI  Database Analysis + Freq. vs Mean Absorption
       - text: "Data Viz"
         menu:
           - text: "Visualizations of Rolling Stone Albumes and UFO Sightings!"
