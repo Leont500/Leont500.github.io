@@ -4,21 +4,24 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Me!
+        text: Info about me
       - href: about.qmd
-        text: About Info
+        text: Resume
       - href: resources.qmd
-        text: Resources!
-      - href: projecttwo.qmd
-        text: Netflix Project 2
-      - href: project3.qmd
-        text: Probability of High Start in BlackJack!
-      - href: project4.qmd
-        text: WAI  Database Analysis + Freq. vs Mean Absorption
-      - text: "Data Viz"
+        text: Coding Projects
+      - text: "Data Science Projects"
         menu:
-          - text: "Visualizations of Rolling Stone Albumes and UFO Sightings!"
+          - text: "Genres throughout the Years & Reported UFO Sightings from US States"
             href: DataVisualization.qmd
+          - href: projecttwo.qmd
+            text: "An Analytic look at Netflix Descriptions"
+          - href: project3.qmd
+            text: "Caluclation for Win Probability at Blackjack using Simulations"
+          - href: project4.qmd
+            text: "WAI  Database Analysis + Freq. vs Mean Absorption"
+          - href: presentation.qmd
+            text: "A Detailed look at Running Simulations"  
+            
 
 
 format:

@@ -1,0 +1,31 @@
+---
+title: "Calculating Probability of Winning Blackjack using Simulations"
+author: "Leonardo Torres"
+subtitle: "December 9th 2024"
+format:
+  revealjs:
+    scrollable: true
+    slide-number: true
+    show-slide-number: all
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+  
+## Slide 1
+
+Introduction
+Hello TESTING ONE TWO THREE
+```{r}
+library(tidyverse)
+x=10
+
+
+```
+
+
+## Slide 2
+
+Follow up

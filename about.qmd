@@ -1,3 +1,7 @@
 ---
-title: "About Page (WIP)"
+title: "Resume as of 12/9/2024"
 ---
+[Resume Download](Leonardo_torres_Resume.pdf)
+
+
+![Resume](media/resume_leo.jpg)

@@ -10,16 +10,15 @@ execute:
   message: false
 ---
 
-```{r}
+My first step here is to load in the data files from github so it can be easily accessed within my quarto doc.
 
-# Option 2: Read directly from GitHub
+```{r}
 
 rolling_stone <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-07/rolling_stone.csv')
 
-
-
 ```
 
+Using a simple ggplot function, we are able to use variables from the dataset to create a graph visualizing albums categorized by genres being released from 1950s to the present. We can see trends in this graph showing how hip-hop/rap grew in popularity after the early 1980s while Rock n 'Roll/Rhythm & Blues started to become less popular in the 1990s.
 ```{r}
 library(tidyverse)
 ggplot(data = rolling_stone) +
@@ -30,6 +29,8 @@ ggplot(data = rolling_stone) +
   )
 ```
 
+
+Similarly load in another dataset from github which can be easily accessed from our ufo_sightings variable.
 ```{r}
 
 
@@ -39,6 +40,8 @@ day_parts_map <- readr::read_csv('https://raw.githubusercontent.com/rfordatascie
 
 ```
 
+
+We will create a vertical point bar graph to represent ufo sightings, categorized throughout states, in comparison to the year they were spotted. From this we can see how in the states CA and NM the use had its first spotting in the late 1920s.
 ```{r}
 
 library(tidyverse)

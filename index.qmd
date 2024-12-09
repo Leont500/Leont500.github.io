@@ -9,8 +9,20 @@ about:
   links:
     - text: LinkedIn
       href: https://www.linkedin.com/in/leonardotorrespomona/
+    - text: Github
+      href: https://github.com/Leont500
+    - text: Handshake
+      href: https://app.joinhandshake.com/profiles/42619587
+    
 
 ---
 
-My name is Leonardo Torres, a junior at Pomona College majoring in Computer Science and Minoring in Math + Data Science. I am very involved at the Draper Center where I coordinator two programs, Pomona Partners and PAYS. I enjoy being involved with affinity groups on campus and love spending time engaging with the community. I am also an officer with the 5C Club LatinX in Tech (LIT).
+My name is Leonardo Torres, a junior at Pomona College majoring in Computer Science and Minoring in Math + Data Science. I am involved at the Draper Center where I coordinate two programs, Pomona Partners and Pomona College For Youth Success (PAYS).I enjoy being involved with affinity groups on campus and love spending time engaging with the community. I am also an officer with the 5C Club LatinX in Tech (LIT).
+
+
+This past summer I spent the time doing research with Professor Eleanor Birrell under SURP. The paper we worked on is titled: Evaluating a Data Fiduciary Standard for Privacy: Developer and End-user Perspectives.
+![Poster Presentation w/ Liam Bayer (Left) and Leonardo Torres( Right)](media/IMG_1857.jpeg)
+
+
+
 

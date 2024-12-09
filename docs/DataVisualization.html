@@ -129,36 +129,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Me!</span></a>
+<span class="menu-text">Info about me</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About Info</span></a>
+<span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./resources.html"> 
-<span class="menu-text">Resources!</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./projecttwo.html"> 
-<span class="menu-text">Netflix Project 2</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./project3.html"> 
-<span class="menu-text">Probability of High Start in BlackJack!</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./project4.html"> 
-<span class="menu-text">WAI Database Analysis + Freq. vs Mean Absorption</span></a>
+<span class="menu-text">Coding Projects</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-viz" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Data Viz</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-science-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Science Projects</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-viz">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-projects">    
         <li>
     <a class="dropdown-item" href="./DataVisualization.html">
- <span class="dropdown-text">Visualizations of Rolling Stone Albumes and UFO Sightings!</span></a>
+ <span class="dropdown-text">Genres throughout the Years &amp; Reported UFO Sightings from US States</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./projecttwo.html">
+ <span class="dropdown-text">An Analytic look at Netflix Descriptions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./project3.html">
+ <span class="dropdown-text">Caluclation for Win Probability at Blackjack using Simulations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./project4.html">
+ <span class="dropdown-text">WAI Database Analysis + Freq. vs Mean Absorption</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presentation.html">
+ <span class="dropdown-text">A Detailed look at Running Simulations</span></a>
   </li>  
     </ul>
   </li>
@@ -216,11 +220,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>My first step here is to load in the data files from github so it can be easily accessed within my quarto doc.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2: Read directly from GitHub</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rolling_stone <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-07/rolling_stone.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>rolling_stone <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-07/rolling_stone.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Using a simple ggplot function, we are able to use variables from the dataset to create a graph visualizing albums categorized by genres being released from 1950s to the present. We can see trends in this graph showing how hip-hop/rap grew in popularity after the early 1980s while Rock n ’Roll/Rhythm &amp; Blues started to become less popular in the 1990s.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> rolling_stone) <span class="sc">+</span></span>
@@ -237,11 +241,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>Similarly load in another dataset from github which can be easily accessed from our ufo_sightings variable.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ufo_sightings <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/ufo_sightings.csv'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>places <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/places.csv'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>day_parts_map <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/day_parts_map.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>We will create a vertical point bar graph to represent ufo sightings, categorized throughout states, in comparison to the year they were spotted. From this we can see how in the states CA and NM the use had its first spotting in the late 1920s.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">filter</span>(ufo_sightings, state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"CA"</span>, <span class="st">"FL"</span>, <span class="st">"MA"</span>, <span class="st">"NV"</span>, <span class="st">"NM"</span>, <span class="st">"NY"</span>, <span class="st">"OH"</span>, <span class="st">"TX"</span>, <span class="st">"WA"</span>, <span class="st">"WY"</span>))) <span class="sc">+</span></span>

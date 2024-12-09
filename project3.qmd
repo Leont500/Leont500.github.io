@@ -1,7 +1,7 @@
 ---
-title: "Project 3: A simulation study"
+title: "A Simulation study: Chance of Winning Blackjack"
 description: |
-  Probability Simulation
+  Using simulations, I will conduct multiple runs of the probability of getting a good hand in blackjack in comparison to how many cards are pulled.
 author: Leonardo Torres
 date: November 8, 2024
 format: html

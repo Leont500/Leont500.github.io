@@ -1,7 +1,7 @@
 ---
-title: "Project 4: SQL Query "
+title: "WAI  Database Analysis + Freq. vs Mean Absorption"
 description: |
-  SQLs
+  Using SQL Queries to create a Freq vs Mean Absorption graph.
 author: Leonardo Torres
 date: November 26, 2024
 format: html
@@ -211,3 +211,7 @@ ggplot(summary_covid_cases, aes(x = Frequency, y = MeanCases, color = `Race/ethn
 ## Conclusion
 Both graphs display similar results as it simply highlights the mean case for that race group. In both we can see the highest mean for cases would be for whites, followed by unknown, hispanics, and so on. My attempt at this failed and it has made me realize that SQL in some cases such as this are far more superior to use as SQL allows it easy to join groups associated which each other along with being able to group by. Although R has this feature as well. SQL makes it much more easy and straightforward due to its organized and hierarchy structure.
 
+
+```{r}
+DBI::dbDisconnect(con_wai, shutdown = TRUE)
+```
