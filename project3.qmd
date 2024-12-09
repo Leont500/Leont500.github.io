@@ -38,7 +38,7 @@ deck
 ```{r}
 calculate_value <- function(n) {
   total <- sum(n)
-  num_aces <- sum(n == 1)
+  num_aces <- sum(n == 11)
   while(total > 21 && num_aces >0){
     total <- total - 10
     num_aces <- num_aces -1

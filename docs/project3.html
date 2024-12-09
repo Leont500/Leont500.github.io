@@ -259,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>calculate_value <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> <span class="fu">sum</span>(n)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  num_aces <span class="ot">&lt;-</span> <span class="fu">sum</span>(n <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  num_aces <span class="ot">&lt;-</span> <span class="fu">sum</span>(n <span class="sc">==</span> <span class="dv">11</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(total <span class="sc">&gt;</span> <span class="dv">21</span> <span class="sc">&amp;&amp;</span> num_aces <span class="sc">&gt;</span><span class="dv">0</span>){</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    total <span class="ot">&lt;-</span> total <span class="sc">-</span> <span class="dv">10</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    num_aces <span class="ot">&lt;-</span> num_aces <span class="sc">-</span><span class="dv">1</span></span>

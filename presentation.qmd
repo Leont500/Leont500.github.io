@@ -14,18 +14,135 @@ execute:
   message: false
 ---
   
-## Slide 1
+## Purpose and Goals
+Interested in the probability of getting a good hand in blackjack, values between 17 to 21, through simulations.
 
-Introduction
-Hello TESTING ONE TWO THREE
+
+* Create a deck
+* Randomly Chose n cards from deck
+* Check total value
+* Run a Simulation (iterate through multiple times)
+
+
+## Creating a Deck
+Using a function called newdeck, we have it represent a list/array of values which correlate with values in a normal card deck. Such as there being four 2 value cards, four 3 value cards, all the way to twelve 10 value cards representing the face cards (jack, queen, king)
+
 ```{r}
 library(tidyverse)
-x=10
 
+newdeck <- function() {
+  deck <- c(rep(2:10, each = 4), rep(10, 4*3), rep(11, 4))  
+  return(deck)
+}
+
+```
+
+```{r}
+deck <- newdeck()
+deck
+```
+
+## Calculating Hand Value
+Function calculate_value is used to calculate the total amount of our hand given the numbers from the deck. It would be as simple as adding the hand however we have to take into consideration the ace values changing from 11 to 1 in the case our hand is above 21:
+
+```{r}
+calculate_value <- function(n) {
+  total <- sum(n)
+  num_aces <- sum(n == 11)
+  while(total > 21 && num_aces >0){
+    total <- total - 10
+    num_aces <- num_aces -1
+  }
+  return(total)
+}
+```
+
+
+## Check if hand is a high value.
+* Create deck
+* Draw n cards from deck
+* Calculate value
+* Return Logical value
+
+```{r}
+between17and21 <- function(num_cards) {
+  deck <- newdeck()
+  hand <- sample(deck, num_cards, replace = FALSE)
+  hand_value <- calculate_value(hand)
+  return(hand_value >= 17 && hand_value <= 21)
+}
+```
+
+## Run Simulation with 2 cards only
+
+Runs the a simulation of drawing two cards 10000 times, calculating the mean probability of it being between 17 and 21 and returns a data frame of such statistics.
+
+```{r}
+draw_cards <- function(nums,reps){
+  probability <- map_lgl(1:reps, ~between17and21(nums)) |> mean()
+  return(data.frame(high_hand_prob = probability, amount_of_cards = nums))
+}
+
+```
+
+```{r}
+set.seed(47)
+draw_cards(2,10000)
+
+```
+
+## Running Simulation varying 2 to 10 cards
+
+Using the mean probability of the multiple 10000 simulations ran, we plot the results on a line graph demonstrating the trend as we draw more cards. At around 5 cards is where we see a very low chance of having a high value hand, as most likely you will have gone above 21. At 2-3 cards its very unlikely to break 21 however it is still possible to be below 17.
+
+```{r}
+set.seed(47)
+map(2:10, ~draw_cards(.x, reps = 10000)) |> 
+  list_rbind()|>
+  ggplot(aes(x= amount_of_cards, y = high_hand_prob)) +
+  geom_line() +
+  labs(title = "Probability of having a high hand value (17-21) in BlackJack" ,y = "probability of having a hand value of 17-21", x = "number of cards drawn")
 
 ```
 
 
-## Slide 2
+## Alternate Probability Calculation
+Instead of getting the probability of having a high value hand, lets calculate the probability of having a hand below 21. Using similar functions but with changed logical values.
 
-Follow up
+```{r}
+between0and21 <- function(num_cards) {
+  deck <- newdeck()
+  hand <- sample(deck, num_cards, replace = FALSE)
+  hand_value <- calculate_value(hand)
+  return(hand_value >= 0 && hand_value <= 21)
+}
+```
+
+```{r}
+draw_cards_alt <- function(nums,reps){
+  probability <- map_lgl(1:reps, ~between0and21(nums)) |> mean()
+  return(data.frame(high_hand_prob = probability, amount_of_cards = nums))
+}
+
+```
+
+## Probability of having less than a 21 value hand
+Simiarly to the previous graph, we can conclude that you would most likley break 21 after drawing 5 cards. It looks like the safe point is at 3 cards as at four your chances are cut more than half. This is due to the high quanity of face cards in the deck (value 10).
+
+```{r}
+set.seed(47)
+map(2:10, ~draw_cards_alt(.x, reps = 10000)) |> 
+  list_rbind()|>
+  ggplot(aes(x= amount_of_cards, y = high_hand_prob)) +
+  geom_line() +
+  labs(title = "Probability of not going above 21 in Blackjack" ,y = "probability of having a hand value of 0-21", x = "number of cards drawn")
+
+```
+
+## Conclusion/ Takeaways
+* Blackjack has some luck involved(people consider it to be heavily skill based)
+* Only draw up to three cards
+* Dealer also has a hand, implement in the future.
+* Overall, hard to simulate since there is a lot of factors when it comes to playing in real life
+
+# Thank you
