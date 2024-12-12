@@ -146,7 +146,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-projects">    
         <li>
     <a class="dropdown-item" href="./DataVisualization.html">
- <span class="dropdown-text">Genres throughout the Years &amp; Reported UFO Sightings from US States</span></a>
+ <span class="dropdown-text">Genres throughout the Years</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./DataViz2.html">
+ <span class="dropdown-text">Reported UFO Sightings from US States</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./projecttwo.html">
@@ -184,12 +188,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#starting-off" id="toc-starting-off" class="nav-link active" data-scroll-target="#starting-off">Starting Off</a></li>
+  <li><a href="#sql-coding" id="toc-sql-coding" class="nav-link" data-scroll-target="#sql-coding">SQL Coding</a></li>
   <li><a href="#table-for-freq-and-absorbance" id="toc-table-for-freq-and-absorbance" class="nav-link" data-scroll-target="#table-for-freq-and-absorbance">Table for Freq and Absorbance</a></li>
   <li><a href="#table-for-legend" id="toc-table-for-legend" class="nav-link" data-scroll-target="#table-for-legend">Table for Legend</a></li>
   <li><a href="#graph-replicate" id="toc-graph-replicate" class="nav-link" data-scroll-target="#graph-replicate">Graph Replicate</a></li>
   <li><a href="#end-description" id="toc-end-description" class="nav-link" data-scroll-target="#end-description">End Description</a></li>
-  <li><a href="#individual-study" id="toc-individual-study" class="nav-link" data-scroll-target="#individual-study">Individual Study</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#focus-on-wai-study" id="toc-focus-on-wai-study" class="nav-link" data-scroll-target="#focus-on-wai-study">Focus on WAI Study</a></li>
+  <li><a href="#graph" id="toc-graph" class="nav-link" data-scroll-target="#graph">Graph</a></li>
+  <li><a href="#conclusion-for-study" id="toc-conclusion-for-study" class="nav-link" data-scroll-target="#conclusion-for-study">Conclusion for Study</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -235,7 +242,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="starting-off" class="level2">
 <h2 class="anchored" data-anchor-id="starting-off">Starting Off</h2>
 <p>In order to complete the task of copying figure one Voss (2020). my approach will be to look at the tables given from such database. From these databases,I will look at three tables specifically labeled as Subjects, PI_Info, and Measurements. I will have to join these tables together so that the information found within them are correlated with the correct publications. Specificaly from what it looks like the legend will be created from the subjects table while the measurement and PI_info tables will need to be joined accordingly.</p>
-<p>##SQL Coding</p>
+</section>
+<section id="sql-coding" class="level2">
+<h2 class="anchored" data-anchor-id="sql-coding">SQL Coding</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -802,113 +811,244 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="end-description">End Description</h2>
 <p>Although the graph above doesn’t look one to one to figure one, it appears to be very similar regarding its trend and location within this plot. As discussed in the beginning, the main goal was to join PI_Info and Measurements together through the Identifier column, since this is what identifies which row is a specific publication. From this a table was created that describes the freq. and mean absorbances for each publication. The next chunk of SQL code joins measurements and PI_Info again however the main purpose of it was to get the the information to create the legend on the given graph. Finally with both tables, I was able to create a plot graph that shows the mean absorbance from each publication depending on its frequencies.</p>
 </section>
-<section id="individual-study" class="level2">
-<h2 class="anchored" data-anchor-id="individual-study">Individual Study</h2>
-<p>After looking through all of tidyverse, I wasn’t able to find a good data set I liked that had sex, race, ethnicity, or age groups that would be best to use for a frequency vs mean absorbance graph. I decided to go on kaggle where I found this public database regarding covid data found at this link. https://www.kaggle.com/code/kerneler/starter-covid-19-cases-and-deaths-by-54180eb0-f/comments</p>
-<p>This dataset contains a Race/Ethnicity column that sepeartes Hispanics, American Indian, Asian, Pacific islander, Black, and etc. I thought this would be perfect and decied to read the csv file I downloaded and go from there</p>
+<section id="focus-on-wai-study" class="level2">
+<h2 class="anchored" data-anchor-id="focus-on-wai-study">Focus on WAI Study</h2>
+<p>As a study I wanted to look into, I focused on Myers_2018 who only researched on babies/infants hearing. Because of this I can’t analyze or look at age groups so I decided that sex would be a good option for this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"COVID-19_Cases_and_Deaths_by_Race_Ethnicity.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>covid_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">From</span> Subjects</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">Identifier</span> <span class="op">=</span> <span class="ot">"Myers_2018"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">0</span>, <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<colgroup>
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Identifier</th>
+<th style="text-align: right;">SubjectNumber</th>
+<th style="text-align: right;">SessionTotal</th>
+<th style="text-align: right;">AgeFirstMeasurement</th>
+<th style="text-align: left;">AgeCategoryFirstMeasurement</th>
+<th style="text-align: left;">Sex</th>
+<th style="text-align: left;">Race</th>
+<th style="text-align: left;">Ethnicity</th>
+<th style="text-align: left;">LeftEarStatusFirstMeasurement</th>
+<th style="text-align: left;">RightEarStatusFirstMeasurement</th>
+<th style="text-align: left;">SubjectNotes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Myers_2018</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0062785</td>
+<td style="text-align: left;">Infant</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">R= unknown L= unknown</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Myers_2018</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0035388</td>
+<td style="text-align: left;">Infant</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Abnormal</td>
+<td style="text-align: left;">Abnormal</td>
+<td style="text-align: left;">R= tymp pass only L= tymp pass only</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Myers_2018</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0043379</td>
+<td style="text-align: left;">Infant</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">R= pass L= pass</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Myers_2018</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0086758</td>
+<td style="text-align: left;">Infant</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">R= pass L= unknown</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Myers_2018</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0085616</td>
+<td style="text-align: left;">Infant</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">R= pass L= pass</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Myers_2018</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0094749</td>
+<td style="text-align: left;">Infant</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">R= pass L= pass</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Myers_2018</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0046804</td>
+<td style="text-align: left;">Infant</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">R= pass L= pass</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Myers_2018</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0052511</td>
+<td style="text-align: left;">Infant</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">R= pass L= pass</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Myers_2018</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0028539</td>
+<td style="text-align: left;">Infant</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">R= pass L= pass</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Myers_2018</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0026256</td>
+<td style="text-align: left;">Infant</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">R= pass L= pass</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Similar code to what was done previously.</p>
+<div class="cell" data-output.var="Myers_2018">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> Measurements.<span class="kw">Identifier</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">AVG</span>(Absorbance) <span class="kw">AS</span> Mean_Absorbance,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        Frequency,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">CONCAT</span>(AuthorsShortList, <span class="ot">" ("</span>, <span class="dt">Year</span>, <span class="ot">") "</span>, <span class="ot">" N= "</span>, </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> Measurements.SubjectNumber, Ear), </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>              <span class="ot">" ; "</span>, Instrument) <span class="kw">AS</span> <span class="kw">Label</span>, Sex</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Measurements</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> PI_Info <span class="kw">ON</span> Measurements.<span class="kw">Identifier</span> <span class="op">=</span> PI_Info.<span class="kw">Identifier</span> </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> Subjects <span class="kw">ON</span> Subjects.SubjectNumber <span class="op">=</span> Measurements.SubjectNumber</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> Measurements.<span class="kw">Identifier</span> <span class="op">=</span> <span class="ot">"Myers_2018"</span> <span class="kw">AND</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>      Frequency <span class="kw">BETWEEN</span> <span class="dv">200</span> <span class="kw">AND</span> <span class="dv">8000</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> Sex, Frequency, Instrument;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Myers_2018)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 382 × 9
-   `Date updated` `Race/ethnicity`              `Total population` `Total cases`
-   &lt;chr&gt;          &lt;chr&gt;                                      &lt;dbl&gt;         &lt;dbl&gt;
- 1 04/20/2020     Hispanic                                  589809          2269
- 2 04/20/2020     NH Asian                                  187532           215
- 3 04/20/2020     NH Black                                  387134          1823
- 4 04/20/2020     NH Other                                       0           118
- 5 04/20/2020     NH White                                 2408190          5101
- 6 04/20/2020     Unknown                                        0          8837
- 7 05/05/2020     Hispanic                                  589809          5079
- 8 05/05/2020     NH American Indian or Alaska…               9566            30
- 9 05/05/2020     NH Asian or Pacific Islander              177966           444
-10 05/05/2020     NH Black                                  387134          3720
-# ℹ 372 more rows
-# ℹ 5 more variables: `Crude case rate per 100k` &lt;dbl&gt;,
-#   `Age adjusted case rate per 100k` &lt;dbl&gt;, `Total deaths` &lt;dbl&gt;,
-#   `Crude death rate per 100k` &lt;dbl&gt;, `Age adjusted death rate per 100k` &lt;dbl&gt;</code></pre>
+<pre><code>  Identifier Mean_Absorbance Frequency                             Label    Sex
+1 Myers_2018          0.4000    226.00 Myers et al. (2018)  N= 2 ; Titan Femake
+2 Myers_2018          0.3920    257.33 Myers et al. (2018)  N= 2 ; Titan Femake
+3 Myers_2018          0.3915    280.62 Myers et al. (2018)  N= 2 ; Titan Femake
+4 Myers_2018          0.3925    297.30 Myers et al. (2018)  N= 2 ; Titan Femake
+5 Myers_2018          0.3910    324.21 Myers et al. (2018)  N= 2 ; Titan Femake
+6 Myers_2018          0.3905    343.49 Myers et al. (2018)  N= 2 ; Titan Femake</code></pre>
 </div>
 </div>
-<p>The main issue I encountered during this was trying to use SQL on this data set. I wasn’t able to set a connection or use SQL commands since I loaded it in R using the read_csv command so it was very difficult to set up a frequency vs mean absorbance graph found in the beginning of this project. I figured I would try to create this graph in a similar format through the use of R instead.</p>
-<p>Below you will find code of me gathering summarizes from the covid data set and graphing two different graphs, a bar graph and an attempt at a line graph.</p>
-<p>Hopefully with more time I can fix this and be able to use SQL to do joining on this data set, possibly I could focus on this for a portion of project 5.</p>
+</section>
+<section id="graph" class="level2">
+<h2 class="anchored" data-anchor-id="graph">Graph</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize data: calculate frequency, mean cases, and mean deaths by race/ethnicity</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>summary_covid_cases <span class="ot">&lt;-</span> covid_data <span class="sc">|&gt;</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Race/ethnicity</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Frequency =</span> <span class="fu">n</span>(),</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">MeanCases =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">Total cases</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot frequency vs. mean cases by race/ethnicity</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_covid_cases, <span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> MeanCases, <span class="at">fill =</span> <span class="st">`</span><span class="at">Race/ethnicity</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequency vs. Mean COVID-19 Cases by Race/Ethnicity"</span>,</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Frequency"</span>,</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Cases"</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Myers_2018 <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> Mean_Absorbance, <span class="at">color =</span> Sex)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean absorbance grouped by Sex. Myers 2018 study"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Frequency(Hz)"</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Absorbance"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.78</span>),</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="project4_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize data: calculate frequency, mean cases by race/ethnicity</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>summary_covid_cases <span class="ot">&lt;-</span> covid_data <span class="sc">|&gt;</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Race/ethnicity</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Frequency =</span> <span class="fu">n</span>(),</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">MeanCases =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">Total cases</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Frequency)  <span class="co"># Order by Frequency to enable smooth line plotting</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot frequency vs. mean cases as a line graph</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_covid_cases, <span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> MeanCases, <span class="at">color =</span> <span class="st">`</span><span class="at">Race/ethnicity</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># Add lines connecting the data points</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="co"># Highlight points for clarity</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequency vs. Mean COVID-19 Cases by Race/Ethnicity"</span>,</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Frequency"</span>,</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Cases"</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="project4_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="project4_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Both graphs display similar results as it simply highlights the mean case for that race group. In both we can see the highest mean for cases would be for whites, followed by unknown, hispanics, and so on. My attempt at this failed and it has made me realize that SQL in some cases such as this are far more superior to use as SQL allows it easy to join groups associated which each other along with being able to group by. Although R has this feature as well. SQL makes it much more easy and straightforward due to its organized and hierarchy structure.</p>
+<section id="conclusion-for-study" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-for-study">Conclusion for Study</h2>
+<p>After gathering all the data from the Myers 2018 study, I am a bit confused on the final outcome of said study because I ended up with Femake as a sex and two Males. It might have been an error when I was mutating however I reset everything and still was left with such results.There is a large difference in means for “Femakes” while the other sexs re about the same similarlity.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(con_wai, <span class="at">shutdown =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(con_wai, <span class="at">shutdown =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Voss, SE. 2019. “Resource Review.” Ear and Hearing 40 (6). https://doi.org/10.1097/AUD.0000000000000790.</p>
+<p>WAI DataBase: Citation: doi.org/10.35482/egr.001.2022</p>
 
 
 </section>

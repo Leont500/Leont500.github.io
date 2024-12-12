@@ -11,8 +11,10 @@ website:
         text: Coding Projects
       - text: "Data Science Projects"
         menu:
-          - text: "Genres throughout the Years & Reported UFO Sightings from US States"
+          - text: "Genres throughout the Years"
             href: DataVisualization.qmd
+          - text: "Reported UFO Sightings from US States"
+            href: DataViz2.qmd
           - href: projecttwo.qmd
             text: "An Analytic look at Netflix Descriptions"
           - href: project3.qmd

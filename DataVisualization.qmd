@@ -1,7 +1,7 @@
 ---
 title: "Data Analysis"
 description: |
-  Analysis of Rolling Stones Albums & UFO Sightings from TidyTueday
+  Analysis of Rolling Stones Albums 
 author: Leonardo Torres
 date: September 18, 2024
 format: html
@@ -9,7 +9,7 @@ execute:
   warning: false
   message: false
 ---
-
+## Installing Data
 My first step here is to load in the data files from github so it can be easily accessed within my quarto doc.
 
 ```{r}
@@ -18,37 +18,23 @@ rolling_stone <- readr::read_csv('https://raw.githubusercontent.com/rfordatascie
 
 ```
 
+## Visualization
 Using a simple ggplot function, we are able to use variables from the dataset to create a graph visualizing albums categorized by genres being released from 1950s to the present. We can see trends in this graph showing how hip-hop/rap grew in popularity after the early 1980s while Rock n 'Roll/Rhythm & Blues started to become less popular in the 1990s.
 ```{r}
 library(tidyverse)
 ggplot(data = rolling_stone) +
   geom_point(aes(x = release_year, y = genre, color = release_year))+
   labs(
+    title = "Genres of Albums throughout the Years",
     x = "Release Years",
     y = "Genres"
   )
 ```
 
+From this analysis, we can see a very clear difference throughout the decades of what music is popular or not. It is interesting to what music has died off such as jazz, while we see a major/sudden rise of others. This just shows how spontaneous music can be throughout the years with the rise and fall of trends. It just makes us realize that genres, artists, and even songs can go from 100 to 0 or 0 to 100.
 
-Similarly load in another dataset from github which can be easily accessed from our ufo_sightings variable.
-```{r}
-
-
-ufo_sightings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/ufo_sightings.csv')
-places <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/places.csv')
-day_parts_map <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/day_parts_map.csv')
-
-```
+## Reference
+The following dataset can be found at:
+https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-05-07/readme.md
 
 
-We will create a vertical point bar graph to represent ufo sightings, categorized throughout states, in comparison to the year they were spotted. From this we can see how in the states CA and NM the use had its first spotting in the late 1920s.
-```{r}
-
-library(tidyverse)
-ggplot(data = filter(ufo_sightings, state %in% c("CA", "FL", "MA", "NV", "NM", "NY", "OH", "TX", "WA", "WY"))) +
-  geom_point(aes(x = state, y = reported_date_time, color = reported_date_time, alpha= .5))+
-  labs(
-    x = "State",
-    y = "Time"
-  )
-```

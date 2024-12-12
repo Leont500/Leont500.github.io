@@ -146,7 +146,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-projects">    
         <li>
     <a class="dropdown-item" href="./DataVisualization.html">
- <span class="dropdown-text">Genres throughout the Years &amp; Reported UFO Sightings from US States</span></a>
+ <span class="dropdown-text">Genres throughout the Years</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./DataViz2.html">
+ <span class="dropdown-text">Reported UFO Sightings from US States</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./projecttwo.html">
@@ -347,6 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conclusion" class="level3">
 <h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
 <p>Overall my main goal was to calculate the chances of a player getting a good hand at the start of a blackjack game and wanted to continue seeing the probability of staying in that range throughout the game. I did this by having a simulation done 10000 times for if a player draws 2 cards all the way to 10 cards and see the probabilities between these choices. Throughout the code I explain what each one does. We can see such probabilities in the first plot and can conclude we have a high chance of getting a good hand in the first two cards and from there the probability gets worse as you play the game. This isn’t necessarily saying you have only a 30 percent chance to have a good hand in the game but it suggests that you can anticipate to win based on the lower amount of cards you have. This is also connected to the second graph calculating probabilities of staying under 21 based on the amount of cards you have. Both graphs have a similar trend and suggest the conclusion that you want to stay within a 3-4 card range when playing the game. To conclude, when playing blackjack you have the highest chance of winning (having a good hand) when starting the game and the more you hit (draw a card) the less chance you have at winning. Blackjack is a very probabilistic game as in this simulation I don’t take into account the decision of hitting or staying based on the dealers hand, since if the dealer has a bad hand, aka a hand that most likely will break 21, you don’t want to worsen your chances since you want to rely on them breaking first. I would love to continue running a simulation like this however it seems very complex and could get confusing but I am happy I got these results in the end.</p>
+<p>Some further codes I could develop, based on ideas suggested by classmates, is 1) implementing a dealers hand to accurately see if the user wins against whatever the dealer has as normally a 17-21 doens’t always constitute a win and 2) add in different playstyles for users such as a risky player, a counting player (who takes into the account of probability whether to draw or not) or a safe player. Overall, blackjack is a complicated game that can’t be taken completely as probability through simulations but we can always try to emulate it.</p>
 
 
 </section>

@@ -178,6 +178,12 @@ ggplot(netflix_titles, aes(x = as.factor(actor_TA), y = description_length, fill
 
 Overall, I feel like I can gain more insight if I use multiple words and more genres. The word "love", "family", and "friend" is very specific and that makes it so our histograms are so small. It would have been better if I used more generic words or used a variety of words. On the counterpart, when looking at actors that start with T or A, I need to be more specific so I can see a difference between the two groups.
 
+## Data Background
+Originally, before being inputted into TidyTuesay, this data can be found from Kaggle by the user Shivam Bansal who uploaded it 3 years ago. Found on this website: https://www.kaggle.com/datasets/shivamb/netflix-shows
+
+This data has had for 500k downloads, and 3 million views from users. No purpose or origin is given as to why this data was even collected so it appears as if this user just gathered this data for the public to use as it was accessed through a public domain. The user has done the same for other websites such as Amazon Prime Video, disney+ and Hulu. This is what the author commented on the description of the dataset:
+
+"Netflix is one of the most popular media and video streaming platforms. They have over 8000 movies or tv shows available on their platform, as of mid-2021, they have over 200M Subscribers globally. This tabular dataset consists of listings of all the movies and tv shows available on Netflix, along with details such as - cast, directors, ratings, release year, duration, etc."
 ### Reference
 
 I got my data set from the tidy tuesday website/section on github. Found at:

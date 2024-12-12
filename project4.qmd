@@ -13,7 +13,7 @@ execute:
 ## Starting Off
 In order to complete the task of copying figure one Voss (2020). my approach will be to look at the tables given from such database. From these databases,I will look at three tables specifically labeled as Subjects, PI_Info, and Measurements. I will have to join these tables together so that the information found within them are correlated with the correct publications. Specificaly from what it looks like the legend will be created from the subjects table while the measurement and PI_info tables will need to be joined accordingly. 
 
-##SQL Coding
+## SQL Coding
 
 ```{r}
 library(DBI)
@@ -124,94 +124,71 @@ info |> ggplot(aes(x = Frequency, y = absorbance, group = legend_graph ,color = 
 Although the graph above doesn't look one to one to figure one, it appears to be very similar regarding its trend and location within this plot. As discussed in the beginning, the main goal was to join PI_Info and Measurements together through the Identifier column, since this is what identifies which row is a specific publication. From this a table was created that describes the freq. and mean absorbances for each publication. The next chunk of SQL code joins measurements and PI_Info again however the main purpose of it was to get the the information to create the legend on the given graph. Finally with both tables, I was able to create a plot graph that shows the mean absorbance from each publication depending on its frequencies. 
 
 
-## Individual Study
-
-After looking through all of tidyverse, I wasn't able to find a good data set I liked that had sex, race, ethnicity, or age groups that would be best to use for a frequency vs mean absorbance graph. I decided to go on kaggle where I found this public database regarding covid data found at this link. https://www.kaggle.com/code/kerneler/starter-covid-19-cases-and-deaths-by-54180eb0-f/comments
-
-This dataset contains a Race/Ethnicity column that sepeartes Hispanics, American Indian, Asian, Pacific islander, Black, and etc. I thought this would be perfect and decied to read the csv file I downloaded and go from there
 
 
-```{r}
-covid_data <- read_csv("COVID-19_Cases_and_Deaths_by_Race_Ethnicity.csv", show_col_types = FALSE)
-covid_data
+## Focus on WAI Study 
+
+As a study I wanted to look into, I focused on Myers_2018 who only researched on babies/infants hearing. Because of this I can't analyze or look at age groups so I decided that sex would be a good option for this.
+
+```{sql, connection=con_wai}
+SELECT *
+From Subjects
+WHERE Identifier = "Myers_2018"
+LIMIT 0, 10
 ```
 
-The main issue I encountered during this was trying to use SQL on this data set. I wasn't able to set a connection or use SQL commands since I loaded it in R using the read_csv command so it was very difficult to set up a frequency vs mean absorbance graph found in the beginning of this project. I figured I would try to create this graph in a similar format through the use of R instead.
+Similar code to what was done previously.
+```{sql, connection = con_wai}
+#| output.var: "Myers_2018"
+SELECT Measurements.Identifier,
+        AVG(Absorbance) AS Mean_Absorbance,
+        Frequency,
+        CONCAT(AuthorsShortList, " (", Year, ") ", " N= ", 
+              COUNT(DISTINCT Measurements.SubjectNumber, Ear), 
+              " ; ", Instrument) AS Label, Sex
+FROM Measurements
+JOIN PI_Info ON Measurements.Identifier = PI_Info.Identifier 
+JOIN Subjects ON Subjects.SubjectNumber = Measurements.SubjectNumber
+WHERE Measurements.Identifier = "Myers_2018" AND
+      Frequency BETWEEN 200 AND 8000
+GROUP BY Sex, Frequency, Instrument;
 
-Below you will find code of me gathering summarizes from the covid data set and graphing two different graphs, a bar graph and an attempt at a line graph. 
-
-Hopefully with more time I can fix this and be able to use SQL to do joining on this data set, possibly I could focus on this for a portion of project 5. 
+```
 
 
 ```{r}
-library(readr)
-library(dplyr)
-library(ggplot2)
+head(Myers_2018)
+```
 
-# Summarize data: calculate frequency, mean cases, and mean deaths by race/ethnicity
-summary_covid_cases <- covid_data |>
-  group_by(`Race/ethnicity`) |>
-  summarize(
-    Frequency = n(),
-    MeanCases = mean(`Total cases`, na.rm = TRUE),
-  )
-
-# Plot frequency vs. mean cases by race/ethnicity
-ggplot(summary_covid_cases, aes(x = Frequency, y = MeanCases, fill = `Race/ethnicity`)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_minimal() +
+## Graph
+```{r}
+Myers_2018 |>
+  ggplot(aes(x = Frequency, y = Mean_Absorbance, color = Sex)) +
+  geom_line() +
   labs(
-    title = "Frequency vs. Mean COVID-19 Cases by Race/Ethnicity",
-    x = "Frequency",
-    y = "Mean Cases"
+    title = "Mean absorbance grouped by Sex. Myers 2018 study",
+    x = "Frequency(Hz)",
+    y = "Mean Absorbance",
   ) +
-  theme(
-    legend.title = element_blank(),
-    plot.title = element_text(hjust = 0.5)
-  )
-
-
-
-```
-
-
-
-
-```{r}
-library(readr)
-library(dplyr)
-library(ggplot2)
-
-# Summarize data: calculate frequency, mean cases by race/ethnicity
-summary_covid_cases <- covid_data |>
-  group_by(`Race/ethnicity`) |>
-  summarize(
-    Frequency = n(),
-    MeanCases = mean(`Total cases`, na.rm = TRUE)
-  ) |>
-  arrange(Frequency)  # Order by Frequency to enable smooth line plotting
-
-# Plot frequency vs. mean cases as a line graph
-ggplot(summary_covid_cases, aes(x = Frequency, y = MeanCases, color = `Race/ethnicity`)) +
-  geom_line(size = 1) + # Add lines connecting the data points
-  geom_point(size = 3) + # Highlight points for clarity
+  scale_x_log10() +
   theme_minimal() +
-  labs(
-    title = "Frequency vs. Mean COVID-19 Cases by Race/Ethnicity",
-    x = "Frequency",
-    y = "Mean Cases"
-  ) +
   theme(
-    legend.title = element_blank(),
-    plot.title = element_text(hjust = 0.5)
-  )
-
+    legend.position = c(0.2,0.78),
+    legend.key.height = unit(0.2, "cm"))
 
 ```
-## Conclusion
-Both graphs display similar results as it simply highlights the mean case for that race group. In both we can see the highest mean for cases would be for whites, followed by unknown, hispanics, and so on. My attempt at this failed and it has made me realize that SQL in some cases such as this are far more superior to use as SQL allows it easy to join groups associated which each other along with being able to group by. Although R has this feature as well. SQL makes it much more easy and straightforward due to its organized and hierarchy structure.
 
+## Conclusion for Study
+
+After gathering all the data from the Myers 2018 study, I am a bit confused on the final outcome of said study because I ended up with Femake as a sex and two Males. It might have been an error when I was mutating however I reset everything and still was left with such results.There is a large difference in means for "Femakes" while the other sexs re about the same similarlity.  
 
 ```{r}
 DBI::dbDisconnect(con_wai, shutdown = TRUE)
 ```
+
+## References
+
+Voss, SE. 2019. “Resource Review.” Ear and Hearing 40 (6). https://doi.org/10.1097/AUD.0000000000000790.
+
+WAI DataBase:
+Citation: doi.org/10.35482/egr.001.2022
